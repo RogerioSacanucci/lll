@@ -3,7 +3,7 @@
   var CONFIG = {
     1234: {
       nome: "Signup Fee",
-      imagem: "https://postimg.cc/RW6NkDqL",
+      imagem: "https://i.postimg.cc/nhTBD8Jg/Whats-App-Image-2026-02-27-at-20-11-33.jpg",
       preco: "$39.95",
     },
     5678: {
