@@ -3,7 +3,8 @@
   var CONFIG = {
     1234: {
       nome: "Signup Fee",
-      imagem: "https://i.postimg.cc/nhTBD8Jg/Whats-App-Image-2026-02-27-at-20-11-33.jpg",
+      imagem:
+        "https://i.postimg.cc/nhTBD8Jg/Whats-App-Image-2026-02-27-at-20-11-33.jpg",
       preco: "$39.95",
     },
     5678: {
@@ -49,24 +50,11 @@
       // esconde símbolo de moeda duplicado
       "#cartx-section-checkout_summary #cartx-section-checkout-cost-details .currency-code.disp-inline-block { display:none !important; }",
 
-      // troca imagem do produto 1 via background
-      "#cartx-section-checkout_summary .prdcts_list .checkout-product-row:nth-of-type(1) .prdct-thumb {",
-      '  background: url("' +
-        cfg.imagem +
-        '") center/cover no-repeat !important;',
-      "  border-radius: 7px;",
-      "}",
-
-      // esconde img original (torna invisível mas mantém espaço)
-      "#cartx-section-checkout_summary .prdcts_list .checkout-product-row:nth-of-type(1) .prdct-thumb img {",
-      "  opacity:0 !important; width:100% !important; height:100% !important;",
-      "}",
-
       // esconde nome original e injeta nome customizado via ::after
-      "#cartx-section-checkout_summary .prdcts_list .checkout-product-row:nth-of-type(1) .prdct-name h5 {",
+      ".prdcts_list .checkout-product-row:nth-of-type(1) .prdct-name h5 {",
       "  font-size:0 !important; line-height:0 !important;",
       "}",
-      "#cartx-section-checkout_summary .prdcts_list .checkout-product-row:nth-of-type(1) .prdct-name h5::after {",
+      ".prdcts_list .checkout-product-row:nth-of-type(1) .prdct-name h5::after {",
       '  content:"' + cfg.nome + '";',
       "  font-size:16px; line-height:1.2; font-weight:400; color:#111;",
       "}",
@@ -117,10 +105,18 @@
     });
   };
 
-  // 3. executa
+  // 3. troca imagem diretamente no src do <img>
+  var swapImage = function () {
+    document.querySelectorAll(".prdct-thumb img").forEach(function (img) {
+      img.src = cfg.imagem;
+    });
+  };
+
+  // 4. executa
   var run = function () {
     injectCSS();
     observeRemovals();
+    swapImage();
   };
 
   document.readyState !== "loading"
